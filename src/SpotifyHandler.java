@@ -84,7 +84,7 @@ public class SpotifyHandler {
 	
 	public void refreshCredentials() {
 		try {
-			SPOTIFY_API.authorizationCodeRefresh().build().execute();
+			SPOTIFY_API.setAccessToken(SPOTIFY_API.authorizationCodeRefresh().build().execute().getAccessToken());		
 		} catch (SpotifyWebApiException | IOException e) {
 			System.out.println("Authorization Refresh failed");
 		}
